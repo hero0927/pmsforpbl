@@ -1,0 +1,50 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  type: "PV_GraphFactory"
+
+two:
+  id: 2
+  type: "EV_GraphFactory"
+
+three:
+  id: 3
+  type: "AC_GraphFactory"
+
+four:
+  id: 4
+  type: "PV_EV_AC_GraphFactory"
+
+five:
+  id: 5
+  type: "SV_GraphFactory"
+
+six:
+  id: 6
+  type: "CV_GraphFactory"
+
+seven:
+  id: 7
+  type: "SV_CV_GraphFactory"
+
+eight:
+  id: 8
+  type: "SPI_GraphFactory"
+
+nine:
+  id: 9
+  type: "CPI_GraphFactory"
+
+ten:
+  id: 10
+  type: "CR_GraphFactory"
+
+eleven:
+  id: 11
+  type: "SPI_CPI_CR_GraphFactory"
+
+twelve:
+  id: 12
+  type: "PC_GraphFactory"
+  

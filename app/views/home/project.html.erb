@@ -1,0 +1,34 @@
+<h1>PMO for PBL</h1>
+
+<div id="limit-date">
+	<h2>期限：</h2>
+	<%= @limittime.strftime("%Y年%m月%d日 %H時 まで")%>
+</div>
+
+<h2>プロジェクト情報</h2>
+  <table>
+  	<tr><th>年度</th><td><%= @project.year %></td></tr>
+  	<tr><th>プロジェクト種別</th><td><%= @project.project_type %></td></tr>
+  	<tr><th>プロジェクト名</th><td><%= @project.project_name %></td></tr>
+  	<tr><th>チーム名</th><td><%= @project.team_name %></td></tr>
+  	<tr><th>プロジェクト開始日</th><td><%= @project.project_start_date %></td></tr>
+  	<tr><th>プロジェクト完了予定日</th><td><%= @project.project_completion_date %></td></tr>
+  </table>
+
+<h2>マネジメントデータ提出状況</h2>
+  <table>
+  	<tr><th>マネジメント種別</th><th>提出データ</th><th>提出状況</th>></tr>
+  	<tr><th>EVM</th><td>EV/AC</td><td>済</td></tr>
+  </table>
+
+<h2>プロジェクト進捗状況</h2>
+  <table>
+  	<tr><th>SPI</th><th>CPI</th><th>CR</th><th>TCPI</th><th>TVAC</th></tr>
+  	<tr>
+  		<td><%= number_with_precision( @evm.spi, :precision => 2, :significant => false) %></td>
+  		<td><%= number_with_precision( @evm.cpi, :precision => 2, :significant => false) %></td>
+  		<td><%= number_with_precision( @evm.cr, :precision => 2, :significant => false) %></td>
+  		<td><%= number_with_precision( @evm.tcpi, :precision => 2, :significant => false) %></td>
+  		<td><%= number_with_precision( @evm.tvac, :precision => 2, :significant => false) %></td>
+  	</tr>
+  </table>

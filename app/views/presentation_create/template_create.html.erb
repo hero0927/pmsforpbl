@@ -1,0 +1,45 @@
+<div class="side">
+	<button>
+		スライドを追加
+	</button>
+	<ul>
+		Template1
+		<li>
+			slide1
+		</li>
+		<li>
+			slide2
+		</li>
+		<li>
+			slide3
+		</li>
+		<li>
+			slide4
+		</li>
+	</ul>
+</div>
+<div id="template_content">
+	テンプレート名<%= text_field_tag('name_tameplate', 'template1')%>
+	<div id="slide_content">
+		スライド名<%= text_field_tag('name_silde', 'slide1')%>
+		グラフの枚数
+		<%= radio_button_tag :'graphnum' , '1', true%>1
+		<%= radio_button_tag :'graphnum' , '2'%>2
+		<%= radio_button_tag :'graphnum' , '4'%>4
+		<br />
+		<%= text_area_tag'comment', 'commenthere',  :cols => 100, :rows => 6%>
+		<br />
+		<div id="template_graph1">
+			1
+		</div>
+		<div id="template_graph2">
+			2
+		</div>
+		<div id="template_graph3">
+			3
+		</div>
+		<div id="template_graph4">
+			4
+		</div>
+	</div>
+</div>

@@ -1,0 +1,103 @@
+
+
+<h1>EVMの登録確認画面です。</h1>
+<ul>
+	<li>入力された値を登録してよろしいですか？</li>
+</ul>
+<%= @evmdata %>
+
+<%= form_tag({:controller => 'evm' ,:action => 'test'},{:id => 'hoge'}) do %>
+
+
+<%= submit_tag "確認" %>
+	<div style="display:none">
+	<% @evmdata.each do |evm| %>
+		<%= text_field_tag 'dates[]', evm.measured_date %>
+		<%= number_field_tag 'pvs[]', evm.pv %>
+		<%= number_field_tag 'bacs[]', evm.bac %>
+		<%= number_field_tag 'sacs[]', evm.sac %>
+	<% end %>
+	</div>
+<% end %>
+
+
+
+<script type="text/javascript">
+			$(function(){
+				// Tabs
+				$('#regist-tabs').tabs(
+				);
+			});
+		</script>
+				<div id="regist-tabs">
+					<ul>
+						<li><a href="#tab-pv">PV</a></li>
+						<li><a href="#tab-bac">BAC</a></li>
+						<li><a href="#tab-sac">SAC</a></li>
+					</ul>
+					<div id="tab-pv">
+						<p>pv!</p><br />
+						<%= @pv_g.draw %>
+						<% @newevms.each do |date_part| %>
+							<table border="3">
+								<tr>
+									<th>Date</th>
+									<% date_part.each do |date| %>
+										<th><%= date.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>PV</th>
+									<% date_part.each do |date| %>
+										<td><%= date.pv %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-bac">
+						<p>BAC!</p><br />
+						<% @newevms.each do |date_part| %>
+							<table border="3">
+								<tr>
+									<th>Date</th>
+									<% date_part.each do |date| %>
+									<td><%= date.measured_date %></td> 
+									<% end %>
+								</tr>
+								<tr>
+									<th>BAC</th>
+									<% date_part.each do |date| %>
+										<td><%= date.bac %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-sac">
+						<p>SAC!</p><br />
+						
+						<% @newevms.each do |date_part| %>
+							<table border="3">
+								<tr>
+									<th>Date</th>
+									<% date_part.each do |date| %>
+									<td><%= date.measured_date %></td> 
+									<% end %>
+								</tr>
+								<tr>
+									<th>SAC</th>
+									<% date_part.each do |date| %>
+										<td><%= date.sac %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+</div>
+
+
+

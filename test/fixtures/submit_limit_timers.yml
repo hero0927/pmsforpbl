@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+pbl:
+  limit_weekday_start: Mon
+  limit_weekday_end: Fri
+  limit_time_start: 8
+  limit_time_end: 18
+  dead_line_weekday: Sun
+  project_type: pbl
+
+kenkyu:
+  limit_weekday_start: Tue
+  limit_weekday_end: Fri
+  limit_time_start: 10
+  limit_time_end: 16
+  dead_line_weekday: Sat
+  project_type: rdp

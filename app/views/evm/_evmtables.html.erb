@@ -1,0 +1,272 @@
+				<h1>EVMページです</h1>
+				<ul>
+					<li>EV,ACを提出する場合はEV/AC提出ボタンをクリックし、データを入力して下さい。</li>
+					<li>リスケジュール等、PV,BAC,SACを再登録する場合EVM登録ボタンをクリックし、データを入力して下さい。</li>
+				</ul>
+				
+				<div id="buttons">
+					<input type="button" value="EV/AC提出" onclick="$('#sample').dialog('open')" class="commandButton"/>
+					<%= button_to("EVM登録", {:controller => "evm", :action => "registration"}) %>
+					
+				</div> 
+
+				<div id="evm-tabs">
+					<ul>
+						<li><a href="#tab-pvevac">PV,EV,AC</a></li>
+						<li><a href="#tab-svcv">SV,CV</a></li>
+						<li><a href="#tab-spicpicr">SPI,CPI,CR</a></li>
+						<li><a href="#tab-pc">PC</a></li>
+						<li><a href="#tab-tcpi">TCPI</a></li>
+						<li><a href="#tab-teactvac">TEAC,TVAC</a></li>
+						<li><a href="#tab-eac">EAC</a></li>
+						<li><a href="#tab-yosokubi">完了予測日</a></li>
+						<li><a href="#tab-bac">BAC</a></li>
+						<li><a href="#tab-sac">SAC</a></li>
+					</ul>
+					<div id="tab-pvevac">
+						<%= @pvevac.draw(660,450) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>PV</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.pv, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>
+								<tr>
+									<th>EV</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.ev, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>
+								<tr>
+									<th>AC</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.ac, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>		
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-svcv">
+						<%= @svcv.draw(600,400) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>SV</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.sv, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>
+								<tr>
+									<th>CV</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.cv, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-spicpicr">
+						<%= @spicpicr.draw(600,400) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>SPI</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.spi, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>
+								<tr>
+									<th>CPI</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.cpi, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>
+								<tr>
+									<th>CR</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.cr, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>		
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-pc">
+						<%= @pc.draw(600,400) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>PC</th>
+									<% evm_part.each do |evm| %>
+										<td><%= evm.pc %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-tcpi">
+						<%= @tcpi.draw(600,400) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>TCPI</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.tcpi, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-teactvac">
+						<%= @teactvac.draw(600,400) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>TEAC</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.teac, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>
+								<tr>
+									<th>TVAC</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.tvac, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-eac">
+						<%= @eac.draw(600,400) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>EAC</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.eac, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-yosokubi">
+						<%= @estimatedcompletiondate.draw(600,400) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>完了予測日</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.estimated_completion_date, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-bac">
+						<%= @bac.draw(600,400) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>BAC</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.bac, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-sac">
+						<%= @sac.draw(600,400) %>
+						<% @tables.each do |evm_part| %>
+							<table border="3">
+								<tr>
+									<th>年月日</th>
+									<% evm_part.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>SAC</th>
+									<% evm_part.each do |evm| %>
+										<td><%= number_with_precision( evm.sac, :precision => 2, :significant => false) %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+				</div>
+				<div id="sample">
+				<%= form_for(@evm,:url => {:action => 'update'}) do |f|%>
+					<p>EV/ACを入力してください。</p>
+					<%= f.select(:measured_date,@unreported_dates) %>
+					<p>EV:<%= f.number_field :ev  %></p>
+					<p>AC:<%= f.number_field :ac  %></p>
+					<%= f.submit "提出" %>
+					<input type="button" value = "キャンセル" onclick="$('#sample').dialog('close')" class="commandButton">
+				<% end %>
+				</div>

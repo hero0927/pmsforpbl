@@ -1,0 +1,51 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#main_left {
+  float: left;
+  border-right: 2px solid #ccc;
+  width: 50%;
+}
+
+#main_right {
+  margin-left: 20px;
+  float: left;
+  #width: 50%;
+}
+
+.home_project {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  width: 80%;
+}
+
+.content, .content li {
+  float : left;
+  width : 100%;
+  list-style-type: none;
+  margin: 0px;
+}
+
+ul.stats-tabs li {
+  float: left;
+  display: block;
+  margin: 0 10px 0 0;
+  padding: 0 10px 0 0;
+  border-right: 1px solid #ccc;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2790AE;
+}
+ul.stats-tabs li:last-child {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+ul.stats-tabs li span {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: normal;
+}

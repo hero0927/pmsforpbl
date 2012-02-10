@@ -1,0 +1,26 @@
+<%= javascript_include_tag "jquery.jqplot" %>
+<%= javascript_include_tag "jqplot.pointLabels" %>
+<%= javascript_include_tag "jqplot.canvasAxisLabelRenderer" %>
+<%= javascript_include_tag "jqplot.canvasTextRenderer" %>
+<%= javascript_include_tag "jqplot.dateAxisRenderer" %>
+<%= javascript_include_tag "jqplot.cursor" %>
+<%= javascript_include_tag "jqplot.canvasAxisTickRenderer" %>
+
+
+
+		
+			<script type="text/javascript">
+				$(function(){
+					// Tabs
+					$('#evm-tabs').tabs();
+					$('#sample').dialog();
+					$('#sample').dialog('close');
+				});
+			</script>
+			<div>
+				<% if @renderable %>
+				<%= render 'evm/evmtables'%>
+				<% else %>
+				<%= render 'evm/unregistered' %>
+				<% end %>
+			</div>

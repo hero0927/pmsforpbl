@@ -1,0 +1,19 @@
+<div class="side">
+	<h4>発表資料アウトライン</h4>
+	<div id="template">
+		<%= radio_button_tag 'type', 'pbl', true %>PBL
+		<%= radio_button_tag 'type', 'rdp' %>研究開発プロジェクト
+	</div>
+	<div id="presen_list">
+		<ul>
+			<% @slides_pbl.each do |slide| %>
+			<li>
+				<%= link_to slide.user.project_name + '_' + slide.page.to_s, {:action => 'show_slide', :id => slide.id}, :remote => true %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+</div>
+<div id="presen_main">
+
+</div>

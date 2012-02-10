@@ -1,0 +1,112 @@
+
+
+<h1>EVMの登録確認画面です。</h1>
+<ul>
+	<li>入力された値を登録してよろしいですか？</li>
+</ul>
+
+<%= form_tag({:controller => 'evm' ,:action => 'test'}) do %>
+
+<%= submit_tag "確認" %>
+  <div style="display:none">
+	<% if @first_registration %>
+		<% @allevms.each do |evm| %>
+			<%= text_field_tag 'dates[]', evm.measured_date %>
+			<%= number_field_tag 'pvs[]', evm.pv %>
+			<%= number_field_tag 'bacs[]', evm.bac %>
+			<%= number_field_tag 'sacs[]', evm.sac %>
+		<% end %>
+	<% else %>
+		<% @new_revisions.each do |evm| %>
+			<%= text_field_tag 'dates[]', evm.measured_date %>
+			<%= number_field_tag 'pvs[]', evm.pv %>
+			<%= number_field_tag 'bacs[]', evm.bac %>
+			<%= number_field_tag 'sacs[]', evm.sac %>
+		<% end %>
+	<% end %>
+  </div>
+<% end %>
+
+<%= button_to("キャンセル", {:controller => "evm", :action => "registration"}) %>
+
+
+<script type="text/javascript">
+			$(function(){
+				// Tabs
+				$('#regist-tabs').tabs(
+				);
+			});
+		</script>
+				<div id="regist-tabs">
+					<ul>
+						<li><a href="#tab-pv">PV</a></li>
+						<li><a href="#tab-bac">BAC</a></li>
+						<li><a href="#tab-sac">SAC</a></li>
+					</ul>
+					<div id="tab-pv">
+						<p>pv!</p><br />
+						<%= @pv.draw(600,400) %>
+						<% @tables.each do |evms| %>
+							<table border="3">
+								<tr>
+									<th>Date</th>
+									<% evms.each do |evm| %>
+										<th><%= evm.measured_date %></th>
+									<% end %>
+								</tr>
+								<tr>
+									<th>PV</th>
+									<% evms.each do |evm| %>
+										<td><%= evm.pv %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-bac">
+						<p>BAC!</p><br />
+						<%= @bac.draw(600,400) %>
+						<% @tables.each do |evms| %>
+							<table border="3">
+								<tr>
+									<th>Date</th>
+									<% evms.each do |evm| %>
+									<td><%= evm.measured_date %></td> 
+									<% end %>
+								</tr>
+								<tr>
+									<th>BAC</th>
+									<% evms.each do |evm| %>
+										<td><%= evm.bac %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+					<div id="tab-sac">
+						<p>SAC!</p><br />
+						<%= @sac.draw(600,400) %>
+						<% @tables.each do |evms| %>
+							<table border="3">
+								<tr>
+									<th>Date</th>
+									<% evms.each do |evm| %>
+									<td><%= evm.measured_date %></td> 
+									<% end %>
+								</tr>
+								<tr>
+									<th>SAC</th>
+									<% evms.each do |evm| %>
+										<td><%= evm.sac %></td>
+									<% end %>
+								</tr>	
+							</table>
+							<br />
+						<% end %>
+					</div>
+</div>
+
+
+

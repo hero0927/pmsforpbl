@@ -1,0 +1,67 @@
+<div id="result">
+	<%= form_tag({:action=>"update_delete"}, :method=>"post") do %>
+	<%= hidden_field_tag :id, @selected_user.id%>
+	<fieldset class="form-actions">
+		<label>アカウントID</label>
+		<%= text_field_tag 'login', @selected_user.login, :disabled => true, :class => "form-text"%>
+		<p class="form-help">
+			アカウントIDは編集できません
+		</p>
+	</fieldset>
+	<fieldset class="form-actions">
+		<label>学生プロジェクト名</label>
+		<%= text_field_tag 'project_name', @selected_user.project_name, :class => "form-text"%>
+	</fieldset>
+	<fieldset class="form-actions">
+		<label>パスワード</label>
+		<%= password_field_tag 'password', @selected_user.password, :class => "form-text"%>
+		<p class="form-help">
+			直接編集できる
+		</p>
+	</fieldset>
+	<fieldset class="form-actions">
+		<label>年度</label>
+		<%= number_field_tag 'year', @selected_user.year, :class => "form-text"%>
+	</fieldset>
+	<fieldset class="form-actions">
+		<label>チーム名</label>
+		<%= text_field_tag 'team_name', @selected_user.team_name, :class => "form-text"%>
+	</fieldset>
+	<fieldset class="form-actions">
+		<label>プロジェクト種別</label>
+		<% if @selected_user.project_type == 'pbl'%>
+		<%= select_tag('project_type', '<option value="pbl" selected="selected">PBL</option><option value="rdp">研究開発プロジェクト</option>'.html_safe)%>
+		<% else %> <%= select_tag('project_type', '<option value="pbl">PBL</option><option value="rdp" selected="selected">研究開発プロジェクト</option>'.html_safe)%> </td>
+		<% end%>
+	</fieldset>
+	<fieldset class="form-actions">
+		<label>プロジェクト状態</label>
+		<% if @selected_user.project_state == 'run'%>
+		<%= select_tag('project_state', '<option value="run" selected="selected">進行中</option><option value="complete">完了</option>'.html_safe)%>
+		<% else %>
+		<%= select_tag('project_state', '<option value="run">進行中</option><option value="complete" selected="selected">完了</option>'.html_safe)%> </td>
+		<% end%>
+		<p class="form-help">
+			「完了」と設定すると、トップ画面に表示されなくなる
+		</p>
+	</fieldset>
+	<fieldset class="form-actions">
+		<label>ログイン制限</label>
+		<%= check_box_tag 'login_limit', 'true', @selected_user.login_limit%>
+		<p class="form-help">
+			チェックすると、ログインできなくなる
+		</p>
+	</fieldset>
+	<%= submit_tag 'Update', :name=>'update', :disable_with =>"送信中", :confirm => "本当にアップデートするか？"%>
+	<%= submit_tag 'Delete', :name=>'delete',:confirm => "本当に削除するか？"%>
+	<%= button_tag 'Cancel', :class=>"hide_content"%>
+	<% end %>
+</div>
+<script>
+	$(function() {
+		$(".hide_content").click(function() {
+			$(".edit_content").hide('slow');
+		})
+	});
+
+</script>

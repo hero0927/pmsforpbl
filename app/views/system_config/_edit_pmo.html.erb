@@ -1,0 +1,25 @@
+<div id="result">
+	<%= form_tag({:action=>"update_pmo"}, :method=>"post") do %>
+	<%= hidden_field_tag :id, @selected_user.id%>
+	<fieldset>
+		<label>アカウントID</label>
+		<%= text_field_tag 'login', @selected_user.login, :disabled => true%>
+		<p class="form-help">アカウントIDは編集できません</p>
+	</fieldset>
+	<fieldset>
+		<label>パスワード</label>
+		<%= password_field_tag 'password', @selected_user.password, :class => "form-text"%>
+	</fieldset>
+	<%= submit_tag 'Update', :name=>'update', :disable_with =>"送信中", :confirm => "本当にアップデートするか？"%>
+	<%= button_tag 'Cancel', :class=>"hide_content"%>
+	<% end %>
+</div>
+</div>
+<script>
+	$(function() {
+		$(".hide_content").click(function() {
+			$(".edit_content").hide('slow');
+		});
+	});
+
+</script>

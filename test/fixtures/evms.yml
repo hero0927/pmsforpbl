@@ -1,0 +1,79 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+zero:
+  id: 7
+  revision: 1
+  measured_date: 2011-10-28
+  pv: 0
+  bac: 746
+  sac: 116
+  ev: 0
+  ac: 0
+  user_id: 6
+  
+one:
+  id: 1
+  revision: 1
+  measured_date: 2011-11-05
+  pv: 10.0
+  bac: 746
+  sac: 116
+  ev: 3.0
+  ac: 1.4
+  user_id: 6
+
+two:
+  id: 2
+  revision: 1
+  measured_date: 2011-11-12
+  pv: 102.65
+  bac: 746
+  sac: 116
+  ev: 15.0
+  ac: 6.31
+  user_id: 6
+
+three:
+  id: 3
+  revision: 1
+  measured_date: 2011-11-19
+  pv: 180.29
+  bac: 746
+  sac: 116
+  ev:
+  ac:
+  user_id: 6
+
+four:
+  id: 4
+  revision: 1
+  measured_date: 2011-11-26
+  pv: 200
+  bac: 746
+  sac: 116
+  ev:
+  ac:
+  user_id: 6
+  
+five:
+  id: 5
+  revision: 2
+  measured_date: 2011-11-19
+  pv: 60
+  bac: 700
+  sac: 116
+  ev: 60
+  ac: 50
+  user_id: 6
+
+six:
+  id: 6
+  revision: 2
+  measured_date: 2011-11-26
+  pv: 100
+  bac: 700
+  sac: 116
+  ev:
+  ac:
+  user_id: 6
+

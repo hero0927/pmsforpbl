@@ -1,0 +1,44 @@
+
+<h1> EVMの登録画面です。 </h1>
+<ul>
+	<li>全ての入力欄に値を入力し、確認ボタンを押してください。</li>
+</ul>
+
+
+<%= form_tag({:controller => 'evm', :action => 'confirm' },{:id => "evmregist"} ) do |f| %>
+
+<%= submit_tag "確認" %>
+
+<table>
+	<tbody>
+		<tr><th>BAC</th><td><%= number_field_tag :bac, 10 %></td></tr>
+		<tr><th>SAC</th><td><%= number_field_tag :sac, 20 %></td></tr>
+	</tbody>>
+</table>
+
+<% @dates.each do |date_part| %>
+	<table border="3">
+		<tr>
+			<th>Date</th>
+			<% date_part.each do |date| %>
+				<th><%= date.strftime("%Y-%m-%d") %></th>
+			<% end %>
+		</tr>
+		<tr>
+			<th>PV</th>
+			<% date_part.each do |date| %>
+				<td>
+					<% if date >= @today || @first_registration %>
+						<%= number_field_tag 'pvs[]', @nums %>
+					<% else %>
+						<%= @nums %>
+					<% end %>
+				</td>
+				<% @nums = @nums + 1 %>　<!-- とりあえず何か登録データを入力するやつ -->
+			<% end %>
+		</tr>
+	</table>
+	<br />
+<% end %>
+
+<% end %>

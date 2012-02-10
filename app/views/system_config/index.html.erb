@@ -1,0 +1,156 @@
+<script>
+	$(function() {
+		$(".tabs").tabs();
+		$("#project_create").dialog({
+			autoOpen : false,
+		});
+		$("#opener").click(function() {
+			$("#project_create").dialog("open");
+			return false;
+		});
+		$("#project_create").dialog({
+			modal : true,
+		});
+
+		$(".click_tab").click(function() {
+			$(".edit_content").hide('slow');
+		});
+		$(".click_name").click(function() {
+			$(".edit_content").hide('fast');
+			$(".edit_content").show('slow');
+		});
+	});
+
+</script>
+<div id="account_config">
+	<h2>アカウント管理</h2>
+	<button id="opener">
+		学生プロジェクトアカウント作成
+	</button>
+	<div class="tabs">
+		<ul>
+			<li>
+				<a href="#tabs-1" class="click_tab">学生プロジェクト</a>
+			</li>
+			<li>
+				<a href="#tabs-2" class="click_tab">PMO</a>
+			</li>
+		</ul>
+		<div id="tabs-1">
+			<div class="list_content">
+				<table>
+					<tr>
+						<th>アカウントID</th>
+						<th>プロジェクト名</th>
+					</tr>
+					<% @project.each do |users| %>
+					<tr>
+						<% projectname = users.project_name %> <td><%= users.login%></td>
+						<td> <%= link_to projectname, {:action => 'show_project', :id => users.id },:class => "click_name", :remote =>true, :method => :post%> </td>
+					</tr>
+					<% end %>
+				</table>
+			</div>
+			<div class="edit_content"></div>
+		</div>
+		<div id="tabs-2">
+			<div class="list_content">
+				<table>
+					<tr>
+						<th>アカウントID</th>
+					</tr>
+					<% @pmo.each do |users| %>
+					<tr>
+						<% pmoname = users.login %><td> <%= link_to pmoname, {:action => 'show_pmo', :id => users.id },:class => "click_name", :remote =>true, :method => :post%> </td>
+					</tr>
+					<% end %>
+				</table>
+			</div>
+			<div class="edit_content"></div>
+		</div>
+	</div>
+</div>
+<hr>
+<div id="schedule_config">
+	<h2>スケジュール設定</h2>
+	<div class="tabs">
+		<ul>
+			<li>
+				<a href="#tabs-1">PBL</a>
+			</li>
+			<li>
+				<a href="#tabs-2">研究開発プロジェクト</a>
+			</li>
+		</ul>
+		<div id="tabs-1">
+			<%= form_tag({:action=>"date_update"}, :method=>"post") do %>
+			<%= hidden_field_tag :id, @slt_pbl.id%>
+			<fieldset>
+				<label>提出ロック期間</label>
+				<%= select_tag 'limit_weekday_start', options_for_select({"日"=>'Sun', '月'=>'Mon', "火"=>'Tue',
+				"水"=>'Wed', '木'=>'Thu', '金'=>'Fri', '土'=>'Sat'}, @slt_pbl.limit_weekday_start) %>曜日
+				<%= select_hour @slt_pbl.limit_time_start, :field_name=>'start'%>時　~
+				<%= select_tag 'limit_weekday_end', options_for_select({"日"=>'Sun', '月'=>'Mon', "火"=>'Tue',
+				"水"=>'Wed', '木'=>'Thu', '金'=>'Fri', '土'=>'Sat'}, @slt_pbl.limit_weekday_end) %>曜日
+				<%= select_hour @slt_pbl.limit_time_end, :field_name=>'end' %>時
+				<p class="form-help">
+					この間に学生はEVMを提出することができません
+				</p>
+			</fieldset>
+			<fieldset>
+				<label>データ締め切り曜日</label>
+				<%= select_tag 'dead_line_weekday', options_for_select({"日"=>'Sun', '月'=>'Mon', "火"=>'Tue',
+				"水"=>'Wed', '木'=>'Thu', '金'=>'Fri', '土'=>'Sat'}, @slt_pbl.dead_line_weekday) %>曜日
+				<p class="form-help">
+					EVMの統計基準日
+				</p>
+			</fieldset>
+			<%= submit_tag "Update", :confirm=>"????" %>
+			<% end %>
+		</div>
+		<div id="tabs-2">
+			<%= form_tag({:action=>"date_update"}, :method=>"post") do %>
+			<%= hidden_field_tag :id, @slt_rdp.id%>
+			<fieldset>
+				<label>提出ロック期間</label>
+				<%= select_tag 'limit_weekday_start', options_for_select({"日"=>'Sun', '月'=>'Mon', "火"=>'Tue',
+				"水"=>'Wed', '木'=>'Thu', '金'=>'Fri', '土'=>'Sat'}, @slt_rdp.limit_weekday_start) %>曜日
+				<%= select_hour @slt_rdp.limit_time_start, :field_name=>'start'%>時　~
+				<%= select_tag 'limit_weekday_end', options_for_select({"日"=>'Sun', '月'=>'Mon', "火"=>'Tue',
+				"水"=>'Wed', '木'=>'Thu', '金'=>'Fri', '土'=>'Sat'}, @slt_rdp.limit_weekday_end) %>曜日
+				<%= select_hour @slt_rdp.limit_time_end, :field_name=>'end' %>時
+				<p class="form-help">
+					この間に学生はEVMを提出することができません
+				</p>
+			</fieldset>
+			<fieldset>
+				<label>データ締め切り曜日</label>
+				<%= select_tag 'dead_line_weekday', options_for_select({"日"=>'Sun', '月'=>'Mon', "火"=>'Tue',
+				"水"=>'Wed', '木'=>'Thu', '金'=>'Fri', '土'=>'Sat'}, @slt_rdp.dead_line_weekday) %>曜日
+				<p class="form-help">
+					EVMの統計基準日
+				</p>
+			</fieldset>
+			<%= submit_tag "Update", :confirm=>"????" %>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div id="project_create" title="プロジェクト作成">
+	<%= form_tag({:action=>"create"}, :method=>"post") do %>
+	<%= hidden_field_tag :login, @newusername%>
+	<fieldset class="form-actions">
+		<label>アカウントID</label>
+		<%= text_field_tag 'login', @newusername, :disabled => true, :class=>"form-text"%>
+	</fieldset>
+	<fieldset class="form-actions"">
+	<label>パスワード</label>
+	<%= text_field_tag 'password', @newusername, :disabled => true, :class=>"form-text" %>
+	</fieldset>
+	<fieldset class="form-actions">
+	<label>プロジェクト種別</label>
+	<%= select_tag('project_type', raw('<option value="pbl">PBL</option><option value="rbp"> 研究開発プロジェクト</option>'))%>
+	</fieldset>
+	<%= submit_tag 'OK', :confirm=>"本当に新しいアカウントを作成しますか？"%>
+	<% end %>
+	</div>

@@ -1,0 +1,87 @@
+<div id="main_left">
+	<h3>PBL:</h3>
+	<div id="test">
+		<p>
+			<span class="ui-icon ui-icon-power"></span>
+			<%= @slt_pbl.get_next_date[1] ? '提出可能' : '提出不可'%>
+		</p>
+		<p>
+			<%= @slt_pbl.get_evm_date[0]%> ~ <%= @slt_pbl.get_evm_date[1]%>
+		</p>
+		<p>
+			次の変更　<%= @slt_pbl.get_next_date[0].strftime("%Y-%m-%d %H:00")%>　まであと
+			<%= distance_of_time_in_words(Time.now, @slt_pbl.get_next_date[0])%>
+		</p>
+	</div>
+	<% @pbl.each do |pbl| %>
+	<fieldset class="home_project">
+		<legend>
+			<strong><%= pbl.project_name%></strong>
+		</legend>
+		<% if pbl.evms == []%>
+		<p>
+			no data yet
+		</p>
+		<% else %>
+			<p>
+				最後提出する日：<%= pbl.currentEvm.measured_date %>
+				今週分は:
+			</p>
+			<ul class="stats-tabs">
+				<li>
+					<%= pbl.currentEvm.spi %><span>SPI</span>
+				</li>
+				<li>
+					<%= pbl.currentEvm.cpi %><span>CPI</span>
+				</li>
+				<li>
+					<%= pbl.currentEvm.cr %><span>CR</span>
+				</li>
+				<li>
+					<%= pbl.currentEvm.tcpi %><span>TCPI</span>
+				</li>
+				<li>
+					<%= pbl.currentEvm.tvac %><span>TVAC</span>
+				</li>
+			</ul>
+			<% end %>
+	</fieldset>
+	<% end %>
+</div>
+<div id="main_right">
+	<h4>研究開発プロジェクト:</h4>
+	<%= @slt_rdp.get_next_date[1] ? '提出可能' : '提出不可'%>　 |
+	期間　<%= @slt_rdp.get_evm_date[0]%> ~ <%= @slt_rdp.get_evm_date[1]%>
+	<br />
+	次の変更は　<%= @slt_rdp.get_next_date[0].strftime("%Y-%m-%d %H:00")%>
+	<br />
+	あと<%= distance_of_time_in_words(Time.now, @slt_rdp.get_next_date[0])%>
+	<br />
+	<% @rdp.each do |rdp| %>
+	<fieldset>
+		<legend>
+			<strong><%= rdp.project_name%></strong>
+		</legend>
+		<p>
+			EVM提出状況
+		</p>
+		<ul class="stats-tabs">
+			<li>
+				<%= rdp.currentEvm.spi %><span>SPI</span>
+			</li>
+			<li>
+				<%= rdp.currentEvm.cpi %><span>CPI</span>
+			</li>
+			<li>
+				<%= rdp.currentEvm.cr %><span>CR</span>
+			</li>
+			<li>
+				<%= rdp.currentEvm.tcpi %><span>TCPI</span>
+			</li>
+			<li>
+				<%= rdp.currentEvm.tvac %><span>TVAC</span>
+			</li>
+		</ul>
+	</fieldset>
+	<% end %>
+</div>

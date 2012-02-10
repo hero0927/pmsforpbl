@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>PMS for PBL</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Pomodoro" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+		<%= javascript_include_tag "application" %>
+		<%= stylesheet_link_tag    "application" %>
+		
+		  
+	</head>
+	<body>
+			<header>
+				<div class="nl">
+					<%= image_tag "site_title.png" ,:alt => "pms for pbl" %><br />
+				</div>
+				チーム名：<%= @current_user.team_name %>
+				<%= link_to 'ログアウト', user_session_path, :method => :delete %>
+				<nav>
+					<div class="container">
+						<ul class="clearFix">
+							<li class="first"><%= link_to("TOP", {:controller => "home", :action => "project"}) %></li>
+							<li><%= link_to("EVM", {:controller => "evm", :action => "index"}) %></li>
+							<li class="last"><%= link_to("発表資料閲覧", {:controller => "presentation_view", :action => "index"}) %></li>
+						</ul>
+					</div>
+				</nav>
+				<hr class="none"/>
+			</header>
+	
+			<%= yield %>
+			
+		<footer>
+				<p>&copy; Copyright  by Pomodoro</p>
+			</footer>
+	</body>	
+</html>

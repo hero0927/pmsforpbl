@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: "st1"
+  presentation_template_id: 1
+  figure_number: 4
+  page: 1
+
+two:
+  id: 2
+  name: "st2"
+  presentation_template_id: 1
+  figure_number: 4
+  page: 2
+
+three:
+  id: 3
+  name: "st3"
+  presentation_template_id: 1
+  figure_number: 4
+  page: 3

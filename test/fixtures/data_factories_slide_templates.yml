@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  data_factory_id: 1
+  slide_template_id: 1
+
+two:
+  data_factory_id: 2
+  slide_template_id: 1
+
+three:
+  data_factory_id: 3
+  slide_template_id: 1
+
+four:
+  data_factory_id: 4
+  slide_template_id: 1
+  
+five:
+  data_factory_id: 5
+  slide_template_id: 2
+
+six:
+  data_factory_id: 6
+  slide_template_id: 2
+  
+seven:
+  data_factory_id: 7
+  slide_template_id: 2
+
+eight:
+  data_factory_id: 8
+  slide_template_id: 2
+  
+nine:
+  data_factory_id: 9
+  slide_template_id: 3
+
+ten:
+  data_factory_id: 10
+  slide_template_id: 3
+  
+eleven:
+  data_factory_id: 11
+  slide_template_id: 3
+
+twelve:
+  data_factory_id: 12
+  slide_template_id: 3

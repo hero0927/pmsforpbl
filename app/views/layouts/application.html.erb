@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PmsForPbl2</title>
+		<%= stylesheet_link_tag    "application" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<header>
+			<h1>PMS for PBL</h1>
+		</header>
+		<div id="rightup">
+			ようこそ <%= current_user.login %> |
+			<%= link_to "個人設定", :controller => 'user_setting'%> |
+			<%= link_to 'ログアウト', user_session_path, :method => :delete %>
+		</div>
+		<nav>
+			<ul id="menu-css">
+				<% if current_user.type == 'Pmo'%>
+				<li>
+					<%= link_to "ホーム", :controller => 'home/pmo' %>
+				</li>
+				<li>
+					<%= link_to "発表資料作成", :controller => 'presentation_create' %>
+				</li>
+				<li>
+					<%= link_to "発表資料閲覧", :action => '' %>
+				</li>
+				<li>
+					<%= link_to "学生プロジェクト情報閲覧", :controller => 'project_view' %>
+				</li>
+				<li>
+					<%= link_to "システム管理", :controller => 'system_config' %>
+				</li>
+				<% else %>
+				<li>
+					<%= link_to 'TOP', :controller => 'home/project' %>
+				</li>
+				<li>
+					<%= link_to 'EVM', :controller=> 'evm'%>
+				</li>
+				<li>
+					<%= link_to '発表資料閲覧', :controller => 'presentation_view'%>
+				</li>
+				<% end %>
+			</ul>
+		</nav>
+		<%= yield %>
+	</body>
+</html>

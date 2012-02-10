@@ -1,0 +1,44 @@
+
+<div id="slide-tabs">
+	<ul>
+	<% @preslide.each_with_index do |slide,i| %>		
+		<li><a href="#tab-<%= i %>">PV,EV,AC</a></li>
+	<% end %>
+	</ul>
+	<% @preslide.each_with_index do |slide,i| %>
+		<div id="tab-<%= i %>">
+			<%= slide.draw %>
+
+		</div>
+	<% end %>
+	</div>
+</div>
+
+<style>
+	<style>
+/* 位置調整 */
+#slide-tabs .ui-tabs{ margin: 0;}
+#slide-tabs .ui-tabs-nav {display:none;}
+</style>
+</style>
+<script type="text/javascript">
+	$(function(){
+		// Tabs
+		var $tabs = $('#slide-tabs').tabs();
+		var a = 0
+		$('#next').click(function(){
+			if ( a < <%= @preslide.size-1 %> ){
+				a += 1;
+				$tabs.tabs('select',a);
+			}
+			return false;
+		})
+		$('#previous').click(function(){
+			if ( a > 0 ){
+				a -= 1;
+				$tabs.tabs('select',a);
+			}
+			return false;
+		})
+	});
+</script>

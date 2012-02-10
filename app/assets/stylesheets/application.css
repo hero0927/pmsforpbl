@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+/* stats tabs */
+{
+	margin: 0;
+	padding: 0;
+
+}
+
+h2 {
+  border-left-color: #3B5998; /* 左枠の色 */
+  padding: 0px 0px 2px 5px; /* 余白の幅 */
+  border-style: solid; /* 枠の種類 */
+  border-width: 0px 0px 0px 15px; /* 枠の幅 */
+}
+
+h3 {
+  border-left-color: #3B5998; /* 左枠の色 */
+  padding: 3px 0px 0px 6px; /* 余白の幅 */
+  border-style: solid; /* 枠の種類 */
+  border-width: 0px 0px 0px 10px; /* 枠の幅 */
+}
+
+body {  
+    margin: 0 auto;  
+    width: 1024px;
+/*    		background-image: -moz-linear-gradient(top, #B2B2B2, #E8E3CF);
+	#background-image: -ms-linear-gradient(top, #B2B2B2, #E8E3CF);
+	background-image: -o-linear-gradient(top, #B2B2B2, #E8E3CF);
+	background-image: -webkit-linear-gradient(top, #B2B2B2, #E8E3CF);
+	background-image: linear-gradient(top, #B2B2B2, #E8E3CF);*/
+
+} 
+/*
+#container {
+	background: red;
+	width: 120%;
+	border-radius: 9px;
+	box-shadow: 0px 0px 10px #000000;
+}
+*/
+#test {
+	width: 85%;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #000000;
+	background: #F9F9F9;
+}
+button {
+	margin: 0;
+	padding: 5px 10px;
+	font-size: 12px;
+	font-weight: bold;
+	border: 1px solid #ccc;
+	background: #eee;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+button:hover, button:focus {
+	border: 1px solid #bbb;
+	background: #e5e5e5;
+}
+button:active {
+	border: 1px solid #ccc;
+	background: #eee;
+}
+
+footer {
+	clear: both;
+}

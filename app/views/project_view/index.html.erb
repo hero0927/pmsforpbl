@@ -1,0 +1,15 @@
+<table>
+	<tr>
+		<th>年度</th><th>プロジェクト種別</th><th>プロジェクト名</th><th>チーム名</th><th>開始日</th><th>終了日</th>
+	</tr>
+	<% @projects.each do |project|%>
+	<tr>
+		<td><%= project.year%></td>
+		<td><%= project.project_type%></td>
+		<td><%= project.project_name%></td>
+		<td><%= project.team_name%></td>
+		<td><%= project.project_start_date%></td>
+		<td><%= project.project_completion_date%></td>
+	</tr>
+	<% end %>
+</table>
