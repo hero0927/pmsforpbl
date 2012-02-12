@@ -5,13 +5,13 @@ class PresentationViewController < ApplicationController
  
  
   def index
-    @project = @current_user
-    param = {:evms => @evms}
-    @evms = @project.currentRevision
-    param = {:evm => @evms}
+    #@project = @current_user
+    #param = {:evms => @evms}
+    #@evms = @project.currentRevision
+    #param = {:evm => @evms}
     
-    @pvevac_f = PV_EV_AC_GraphFactory.new
-    @pvevac = @pvevac_f.getSlideData(param) #Viewで使用
+    #@pvevac_f = PV_EV_AC_GraphFactory.new
+    #@pvevac = @pvevac_f.getSlideData(param) #Viewで使用
     
     
     
