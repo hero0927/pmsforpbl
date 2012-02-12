@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120209102039) do
+ActiveRecord::Schema.define(:version => 20120212060205) do
 
   create_table "data_factories", :force => true do |t|
     t.string   "type"
@@ -140,7 +140,6 @@ ActiveRecord::Schema.define(:version => 20120209102039) do
     t.string   "limit_weekday_end"
     t.integer  "limit_time_start"
     t.integer  "limit_time_end"
-    t.string   "dead_line_weekday"
     t.string   "project_type"
     t.datetime "created_at"
     t.datetime "updated_at"
