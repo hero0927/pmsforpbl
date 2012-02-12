@@ -1,0 +1,91 @@
+<div>
+	<%= flash[:success] %>
+	<%= form_tag({:action=>"Update"}, :method=>"post", :id => "setting_form") do %>
+	<% if @current_user.type == 'Project' %>
+	<div>
+		<h4>アカウント情報</h4>
+		<fieldset class="form-actions">
+			<label>アカウントID</label>
+			<%= text_field_tag 'login', @current_user.login, :disabled => true, :class => "form-text"%>
+			<p class="form-help">
+				アカウントIDは編集できません
+			</p>
+		</fieldset>
+		<fieldset class="form-actions">
+			<label>パスワード</label>
+			<%= password_field_tag 'password', @current_user.password, :class => "form-text"%>
+		</fieldset>
+		<fieldset class="form-actions">
+			<label>パスワード</label>
+			<%= password_field_tag 'password_confirmation', @current_user.password_confirmation, :class => "form-text"%>
+			<p class="form-help">
+				もう一回入力する
+			</p>
+		</fieldset>
+		<%= flash[:password_errors] %>
+		<fieldset class="form-actions">
+			<label>プロジェクト名</label>
+			<%= text_field_tag 'project_name', @current_user.project_name, :class => "form-text"%>
+		</fieldset>
+		<fieldset class="form-actions">
+			<label>チーム名</label>
+			<%= text_field_tag 'team_name', @current_user.team_name, :class => "form-text"%>
+		</fieldset><br />
+		<hr>
+		<h4>プロジェクト情報</h4>
+		</fieldset>
+		<fieldset class="form-actions">
+			<label>プロジェクト開始日</label>
+			<%= select_date(@current_user.project_start_date, :prefix => 'start') %> <p class="form-help"></p>
+		</fieldset>
+		<fieldset class="form-actions">
+			<label>マネジメントデータ提出開始日</label>
+			<%= select_date(@current_user.project_completion_date, :prefix => 'completion')%>
+			<p class="form-help">
+				マネジメントデータ(Evm)を提出前に設定してください、一旦設定した後、変更しないように
+			</p>
+		</fieldset>
+		<fieldset class="form-actions">
+			<label>プロジェクト終了予定日</label>
+			<%= select_date(@current_user.project_stats_start_date, :prefix => 'stats')%>
+			<p class="form-help">
+				複数回編集可能
+			</p>
+		</fieldset>
+		<fieldset>
+			<label>プロジェクト状態変更</label>
+			<% if @current_user.project_state == 'run'%>
+			<%= select_tag('project_state', '<option value="run" selected="selected">進行中</option><option value="complete">完了</option>'.html_safe)%>
+			<% else %>
+			<%= select_tag('project_state', '<option value="run">進行中</option><option value="complete" selected="selected">完了</option>'.html_safe)%> </td>
+			<% end%>
+		</fieldset>
+	</div>
+	<% else %>
+	<div>
+		<h4>アカウント情報</h4>
+		<fieldset class="form-actions">
+			<label>アカウントID</label>
+			<%= text_field_tag 'login', @current_user.login, :disabled => true, :class => "form-text"%>
+			<p class="form-help">
+				アカウントIDは編集できません
+			</p>
+		</fieldset>
+		<fieldset class="form-actions">
+			<label>パスワード</label>
+			<%= password_field_tag 'password', @current_user.password, :class => "form-text"%>
+		</fieldset>
+		<fieldset class="form-actions">
+			<label>パスワード</label>
+			<%= password_field_tag 'password_confirmation', @current_user.password_confirmation, :class => "form-text"%>
+			<p class="form-help">
+				もう一回入力する
+			</p>
+		</fieldset>
+		<span class="ui-state-error"><%= flash[:password_errors] %></span>
+	</div>
+	<% end %>
+	<br />
+	<%= submit_tag 'Save Change', :confirm => "本当に更新ですか？"%>
+	<% end %>
+</div>

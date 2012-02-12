@@ -13,6 +13,16 @@
 
 }
 
+header {
+	float: left;
+}
+#rightup {
+	float: right;
+}
+nav {
+	clear: both;
+}
+
 h2 {
   border-left-color: #3B5998; /* 左枠の色 */
   padding: 0px 0px 2px 5px; /* 余白の幅 */
