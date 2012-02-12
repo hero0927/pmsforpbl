@@ -5,7 +5,6 @@ class CreateSubmitLimitTimers < ActiveRecord::Migration
       t.string :limit_weekday_end
       t.integer :limit_time_start
       t.integer :limit_time_end
-      t.string :dead_line_weekday
       t.string :project_type
 
       t.timestamps

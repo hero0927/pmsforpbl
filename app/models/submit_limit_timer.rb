@@ -17,18 +17,16 @@ class SubmitLimitTimer < ActiveRecord::Base
     end
   end
 
-  #get_evm_date[0]: データ締め切り日の開始(Date), get_evm_date[1]:データ締め切り日の終了(Date)
-  def get_evm_date
-    today_wday = Date.today.wday
-    step = today_wday - get_weekday(dead_line_weekday)
-    if(step > 0)
-      return Date.today - step, Date.today - step + 7
-    else
-      return Date.today - step - 7, Date.today - step
-    end
-  end
+  # def get_evm_date
+    # today_wday = Date.today.wday
+    # step = today_wday - get_weekday(dead_line_weekday)
+    # if(step > 0)
+      # return Date.today - step, Date.today - step + 7
+    # else
+      # return Date.today - step - 7, Date.today - step
+    # end
+  # end
 
-  #get_next_date[0]:次のロック（解除）状態変更日(DateTime), get_next_date[1]:現在の提出可否状態(boolean)  true = 提出可　false = 提出不可
   def get_next_date
     today_wday = Date.today.wday
     wday_s = get_weekday(limit_weekday_start)

@@ -97,14 +97,6 @@
 					この間に学生はEVMを提出することができません
 				</p>
 			</fieldset>
-			<fieldset>
-				<label>データ締め切り曜日</label>
-				<%= select_tag 'dead_line_weekday', options_for_select({"日"=>'Sun', '月'=>'Mon', "火"=>'Tue',
-				"水"=>'Wed', '木'=>'Thu', '金'=>'Fri', '土'=>'Sat'}, @slt_pbl.dead_line_weekday) %>曜日
-				<p class="form-help">
-					EVMの統計基準日
-				</p>
-			</fieldset>
 			<%= submit_tag "Update", :confirm=>"????" %>
 			<% end %>
 		</div>
@@ -121,14 +113,6 @@
 				<%= select_hour @slt_rdp.limit_time_end, :field_name=>'end' %>時
 				<p class="form-help">
 					この間に学生はEVMを提出することができません
-				</p>
-			</fieldset>
-			<fieldset>
-				<label>データ締め切り曜日</label>
-				<%= select_tag 'dead_line_weekday', options_for_select({"日"=>'Sun', '月'=>'Mon', "火"=>'Tue',
-				"水"=>'Wed', '木'=>'Thu', '金'=>'Fri', '土'=>'Sat'}, @slt_rdp.dead_line_weekday) %>曜日
-				<p class="form-help">
-					EVMの統計基準日
 				</p>
 			</fieldset>
 			<%= submit_tag "Update", :confirm=>"????" %>

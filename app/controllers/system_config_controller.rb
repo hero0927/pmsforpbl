@@ -82,7 +82,6 @@ class SystemConfigController < ApplicationController
     @slt.limit_weekday_end = params[:limit_weekday_end]
     @slt.limit_time_start = params[:date][:start]
     @slt.limit_time_end = params[:date][:end]
-    @slt.dead_line_weekday = params[:dead_line_weekday]
 
     @slt.save
     redirect_to :back

@@ -2,11 +2,7 @@
 	<h3>PBL:</h3>
 	<div id="test">
 		<p>
-			<span class="ui-icon ui-icon-power"></span>
 			<%= @slt_pbl.get_next_date[1] ? '提出可能' : '提出不可'%>
-		</p>
-		<p>
-			<%= @slt_pbl.get_evm_date[0]%> ~ <%= @slt_pbl.get_evm_date[1]%>
 		</p>
 		<p>
 			次の変更　<%= @slt_pbl.get_next_date[0].strftime("%Y-%m-%d %H:00")%>　まであと
@@ -51,7 +47,6 @@
 <div id="main_right">
 	<h4>研究開発プロジェクト:</h4>
 	<%= @slt_rdp.get_next_date[1] ? '提出可能' : '提出不可'%>　 |
-	期間　<%= @slt_rdp.get_evm_date[0]%> ~ <%= @slt_rdp.get_evm_date[1]%>
 	<br />
 	次の変更は　<%= @slt_rdp.get_next_date[0].strftime("%Y-%m-%d %H:00")%>
 	<br />
