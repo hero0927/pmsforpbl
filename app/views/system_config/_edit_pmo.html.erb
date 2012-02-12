@@ -9,7 +9,7 @@
 	<fieldset>
 		<label>パスワード</label>
 		<%= password_field_tag 'password', @selected_user.password, :class => "form-text"%>
-	</fieldset>
+	</fieldset><br />
 	<%= submit_tag 'Update', :name=>'update', :disable_with =>"送信中", :confirm => "本当にアップデートするか？"%>
 	<%= button_tag 'Cancel', :class=>"hide_content"%>
 	<% end %>
